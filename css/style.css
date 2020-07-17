@@ -1,0 +1,137 @@
+@charset "UTF-8";
+.logo {
+  display: flex;
+  vertical-align: middle;
+  font-family: 'Caveat Brush', cursive; }
+
+.topbar {
+  background-color: #F3E9F1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 2rem 2rem;
+  align-items: center; }
+  .topbar__logo {
+    width: 5rem; }
+  .topbar__nav {
+    font-size: 1.5rem; }
+    @media screen and (max-width: 425px) {
+      .topbar__nav {
+        font-size: 1rem; } }
+  @media screen and (max-width: 425px) {
+    .topbar {
+      flex-direction: column;
+      align-items: center;
+      padding: 0; } }
+
+.nav__link {
+  text-decoration: none;
+  color: black;
+  padding: 0 1rem;
+  max-width: 140px;
+  font-weight: bold;
+  text-decoration: none; }
+  .nav__link:hover, .nav__link:focus {
+    background: #BF7472cc; }
+@media screen and (max-width: 425px) {
+  .nav {
+    display: flex;
+    justify-content: space-between; } }
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #F3E9F1;
+  position: fixed;
+  width: 100%;
+  bottom: 0; }
+
+.list-product {
+  margin-top: 1rem; }
+  .list-product__block {
+    border: 3px solid #59545e;
+    margin: 1%;
+    padding: 1%;
+    display: flex;
+    align-items: center; }
+    .list-product__block--left {
+      flex: 2; }
+      .list-product__block--left img {
+        width: 100%; }
+    .list-product__block--right {
+      flex: 3;
+      text-align: center; }
+      .list-product__block--right h2 {
+        font-size: 3rem;
+        color: red; }
+        @media screen and (max-width: 425px) {
+          .list-product__block--right h2 {
+            font-size: 1.5rem; } }
+      .list-product__block--right p {
+        font-size: 1.5rem; }
+
+.sheet-product {
+  display: none;
+  margin: 2rem; }
+  .sheet-product__name {
+    font-size: 2rem;
+    text-align: center; }
+  .sheet-product__img {
+    flex: 3; }
+    .sheet-product__img img {
+      width: 100%; }
+  .sheet-product__description {
+    flex: 3;
+    padding: 1rem; }
+    @media screen and (max-width: 425px) {
+      .sheet-product__description {
+        padding: 0; } }
+    .sheet-product__description__head {
+      font-weight: bold; }
+    .sheet-product__description__order {
+      text-align: center; }
+
+.titre {
+  text-align: center;
+  font-family: 'Caveat Brush', cursive;
+  color: #9167fd; }
+
+a:link {
+  text-decoration: none; }
+
+#produits {
+  display: flex;
+  flex-flow: row wrap; }
+
+#produits article {
+  width: 300px;
+  height: 350px;
+  background-color: #fff;
+  box-shadow: 3px 5px 5px #9167fd;
+  transition: box-shadow 1s;
+  margin: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  position: relative;
+  border: 2px solid #d88646; }
+
+article img {
+  display: block;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto; }
+
+article .produits-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-left: 0;
+  margin-bottom: 1rem; }
+
+article .price {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center; }
+
+article .price::after {
+  content: " €"; }
+
+/*# sourceMappingURL=style.css.map */
