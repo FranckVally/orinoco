@@ -15,7 +15,7 @@ const getAllCams = async (url) => {
   return await response.json();
 };
 
-// Fourni l'affichage d'un produit
+// Faire l'affichage d'un produit
 function renderProduct(productName, productId, productImg, productPrice) {
   const products = document.querySelector("#produits");    // Récupère la div qui contiendra les différents articles
   const article = document.createElement("article");       //  construction de l'élément contenant les carractéristique article
