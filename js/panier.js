@@ -29,7 +29,7 @@ const displayCart = async () => {
       const article = document.querySelectorAll("article")[i];
       const moins = document.querySelectorAll(".moins")[i];
       const plus = document.querySelectorAll(".plus")[i];
-     
+
       deleteCart(remove, article, itemId);
       decrementItem(moins, article, itemId); // appel de la fonction décrémentation avec la flèche de gauche
       incrementItem(plus, article, itemId); // appel de la fonction incrémentation avec la flèche de droite
@@ -78,7 +78,7 @@ const deleteCart = (removeElt, container, productId) => {
   });
 };
 
-// décrémente et enlève un produit au panier avec la flèche de gauche
+// décrémente et enlève un produit au panier avec bouton moins
 
 const decrementItem = (moins, container, productId) => {
   moins.addEventListener("click", () => {
@@ -97,7 +97,7 @@ const decrementItem = (moins, container, productId) => {
   });
 };
 
-// incremente et rajoute un produit au panier avec la flèche de droite
+// incremente et rajoute un produit au panier avec bouton plus
 
 const incrementItem = (plus, container, productId) => {
   plus.addEventListener("click", () => {
@@ -121,6 +121,7 @@ displayCart();
 const containNumber = /[0-9]/;
 const regexEmail = /.+@.+\..+/;
 const specialCharacter = /[$&+,:;=?@#|'<>.^*()%!"{}_"]/;
+const regcodePostal =/[0-9]{5}/g;
 
 const isNotEmpty = (value) => (value !== "" ? true : false); // Vérifie que la valeur donnée ne soit pas vide
 const isLongEnough = (value) => (value.length >= 2 ? true : false); // Vérifie que la valeur donnée ait assez de caractère
@@ -129,6 +130,7 @@ const doNotContainNumber = (value) =>
 const doNotContainSpecialCharacter = (value) =>
   !value.match(specialCharacter) ? true : false; // Vérifie que la valeur donnée ne possède pas de symbole
 const isValidEmail = (value) => (value.match(regexEmail) ? true : false); // Vérifie que la valeur donnée soit bien dans le format email
+const isValidCodePostal = (value) => (value.match(regcodePostal) ? true : false); // Vérifie que la valeur donnée soit bien dans le format code postal
 
 const isValidInput = (value) =>
   isNotEmpty(value) &&
@@ -136,11 +138,13 @@ const isValidInput = (value) =>
   doNotContainNumber(value) &&
   doNotContainSpecialCharacter(value); // renvoie true si toutes les conditions sont vérifiées
 
+
 // Récupère les éléments du formulaire
 const firstName = form.elements.firstName;
 const lastName = form.elements.lastName;
 const address = form.elements.address;
 const city = form.elements.city;
+const codePostal = form.elements.codePostal;
 const email = form.elements.email;
 const btn = document.getElementById("btn");
 
@@ -148,6 +152,7 @@ const firstNameErrorMessage = document.getElementById("firstNameErrorMessage");
 const lastNameErrorMessage = document.getElementById("lastNameErrorMessage");
 const addressErrorMessage = document.getElementById("addressErrorMessage");
 const cityErrorMessage = document.getElementById("cityErrorMessage");
+const codePostalErrorMessage = document.getElementById("codePostalErrorMessage");
 const emailErrorMessage = document.getElementById("emailErrorMessage");
 
 //Permet de vérifier les saisies utilisateurs
@@ -164,21 +169,31 @@ const formValidate = () => {
         if (isValidInput(city.value)) {
           cityErrorMessage.textContent = "";
 
-          if (isValidEmail(email.value)) {
-            emailErrorMessage.textContent = "";
+          if (isValidCodePostal(codePostal.value)) {
+            codePostalErrorMessage.textContent = "";
 
-            return (cartInformation.contact = {
-              // Si toutes les inputs saisies sont valides, renvoie l'objet contact à cartInformation
-              firstName: firstName.value,
-              lastName: lastName.value,
-              address: address.value,
-              city: city.value,
-              email: email.value,
-            });
+            if (isValidEmail(email.value)) {
+              emailErrorMessage.textContent = "";
+
+              return (cartInformation.contact = {
+                // Si toutes les inputs saisies sont valides, renvoie l'objet contact à cartInformation
+                firstName: firstName.value,
+                lastName: lastName.value,
+                address: address.value,
+                city: city.value,
+                codePostal: codePostal.value,
+                email: email.value,
+              });
+            } else {
+              emailErrorMessage.textContent =
+                "Merci de renseigner votre adresse mail !";
+              email.focus();
+              return false;
+            }
           } else {
-            emailErrorMessage.textContent =
-              "Merci de renseigner votre adresse mail !";
-            email.focus();
+            codePostalErrorMessage.textContent =
+              "Merci de renseigner votre code postal !";
+            codePostal.focus();
             return false;
           }
         } else {
