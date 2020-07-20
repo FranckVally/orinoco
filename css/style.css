@@ -118,7 +118,8 @@ article img {
   display: block;
   width: 75%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-top: 1.5rem; }
 
 article .produits-title {
   text-align: center;
@@ -133,5 +134,60 @@ article .price {
 
 article .price::after {
   content: " €"; }
+
+#produits {
+  width: 80%;
+  background-color: #fff;
+  box-shadow: 3px 5px 5px #9167fd;
+  transition: box-shadow 1s;
+  margin: auto;
+  position: relative;
+  border: 2px solid #d88646;
+  padding: 3rem;
+  text-align: center; }
+
+#produits-information {
+  margin: auto; }
+
+#produits-title {
+  margin: auto; }
+
+#lenses-list {
+  margin: auto; }
+
+.add-to-cart {
+  margin: auto;
+  padding: 0.5rem; }
+
+label {
+  margin: auto; }
+
+#cart article {
+  color: #000000;
+  background-color: #f3e9f1;
+  font-size: 1.2rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  margin: 1rem auto;
+  padding: 2rem;
+  box-shadow: none; }
+
+#cart article img {
+  width: 20%;
+  display: inline-block;
+  margin: 1rem; }
+
+#cart article .remove {
+  margin: 0;
+  cursor: pointer; }
+
+#cart article .remove:hover {
+  color: red; }
+
+.moins,
+.plus {
+  margin: 0.5rem; }
 
 /*# sourceMappingURL=style.css.map */

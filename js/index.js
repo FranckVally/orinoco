@@ -2,7 +2,7 @@
 const url = "http://localhost:3000/api/cameras";
 
 // Affiche les produits
-const displayProducts = async () => {
+const afficheProducts = async () => {
   const products = await getAllCams(url);
   products.forEach((product) => {
     renderProduct(product.name, product._id, product.imageUrl, product.price);
@@ -15,7 +15,7 @@ const getAllCams = async (url) => {
   return await response.json();
 };
 
-// Faire l'affichage d'un produit
+// affichage d'un produit
 function renderProduct(productName, productId, productImg, productPrice) {
   const products = document.querySelector("#produits");    // Récupère la div qui contiendra les différents articles
   const article = document.createElement("article");       //  construction de l'élément contenant les carractéristique article
@@ -28,4 +28,4 @@ function renderProduct(productName, productId, productImg, productPrice) {
   products.appendChild(article);
 }
 
-displayProducts();
+afficheProducts();

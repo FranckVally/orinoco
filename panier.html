@@ -22,15 +22,43 @@
 		</nav>
 	</header>
 	<main>
-        
-  </main>
+		<div class="titre"><h2>Détail de votre panier</h2></div>		
+		<section id="cart">
+		  <h3 id="cart-total"></h3>
+		</section>
+		<div class="container">
+		  <form>
+			<label for="firstName">Prénom : </label>
+			<input type="text" id="firstName" name="firstName" />
+			<p id="firstNameErrorMessage" class="form-error"></p>
+  
+			<label for="lastName">Nom : </label>
+			<input type="text" id="lastName" name="lastName" />
+			<p id="lastNameErrorMessage" class="form-error"></p>
+  
+			<label for="address">Adresse : </label>
+			<input type="text" id="address" name="address" />
+			<p id="addressErrorMessage" class="form-error"></p>
+  
+			<label for="city">Ville : </label>
+			<input type="text" id="city" name="city" />
+			<p id="cityErrorMessage" class="form-error"></p>
+  
+			<label for="email">Email : </label>
+			<input type="email" id="email" name="email" />
+			<p id="emailErrorMessage" class="form-error"></p>
+  
+			<input type="submit" id="btn" value="Valider" />
+		  </form>
+		</div>
+	  </main>
 	<footer>
 		<p>Projet 5 du parcours d'<a href="https://openclassrooms.com/">Openclassrooms</a> Franck VALY</p>
 	</footer>
 
 
 	<!-- Scripts JS -->
-<script src="js/"></script>
+<script src="js/panier.js"></script>
 
 	<!-- Scripts JS END -->
 </body>
