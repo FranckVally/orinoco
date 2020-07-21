@@ -23,7 +23,7 @@ function renderProduct(productName, productId, productImg, productPrice) {
     `<a href="produits.html?id=${productId}" style="display:block;width:100%;height:100%;">
     <img alt="${productName}" src="${productImg}">
     <p class="produits-title">${productName}</p>
-    <p class="price">${productPrice / 100}</p>
+    <p class="price">${productPrice / 100} €</p>
     </a>`;
   products.appendChild(article);
 }

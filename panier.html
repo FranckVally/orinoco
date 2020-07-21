@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-	<title>ORINOCO</title>
-	<meta name="description" content="ORINOCO : site de vente en ligne.">
-</head>
-<body class="container">
-	<header class="topbar">
-		
-        <div class="logo">
-        <img class="topbar__logo" src="images/logo_orinoco.png" alt="Logo d'Orinoco">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ORINOCO</title>
+    <meta name="description" content="ORINOCO : site de vente en ligne." />
+  </head>
+  <body class="container">
+    <header class="topbar">
+      <div class="logo">
+        <img class="topbar__logo" src="images/logo_orinoco.png" alt="Logo d'Orinoco"/>
         <h1>ORINOCO</h1>
-        </div>
-        
-		<nav class="nav topbar__nav">
-			<a href="index.html" class="nav__link">Accueil</a>
-			<a href="panier.html" class="nav__link">Panier</a>
-		</nav>
-	</header>
-	<main>
-		<div class="titre"><h2>Détail de votre panier</h2></div>		
-		<section id="cart">
-		  <h3 id="cart-total"></h3>
-		</section>
-		<div class="container">
-		  <form>
-			<label for="firstName">Prénom : </label>
-			<input type="text" id="firstName" name="firstName" />
-			<p id="firstNameErrorMessage" class="form-error"></p>
-  
-			<label for="lastName">Nom : </label>
-			<input type="text" id="lastName" name="lastName" />
-			<p id="lastNameErrorMessage" class="form-error"></p>
-  
-			<label for="address">Adresse : </label>
-			<input type="text" id="address" name="address" />
-			<p id="addressErrorMessage" class="form-error"></p>
-  
-			<label for="city">Ville : </label>
-			<input type="text" id="city" name="city" />
-			<p id="cityErrorMessage" class="form-error"></p>
+      </div>
 
-			<label for="codePostal">Code postal : </label>
-			<input type="texte" id="codePostal" name="codePostal" />
-			<p id="codePostalErrorMessage" class="form-error"></p>
-  
-			<label for="email">Email : </label>
-			<input type="email" id="email" name="email" />
-			<p id="emailErrorMessage" class="form-error"></p>
-  
-			<input type="submit" id="btn" value="Valider" />
-		  </form>
-		</div>
-	  </main>
-	<footer>
-		<p>Projet 5 du parcours d'<a href="https://openclassrooms.com/">Openclassrooms</a> Franck VALY</p>
-	</footer>
+      <nav class="nav topbar__nav">
+        <a href="index.html" class="nav__link">Accueil</a>
+      </nav>
+    </header>
+    <main>
+      <div class="titre"><h2>Détail de votre panier</h2></div>
+      <section id="cart">
+        <h3 id="cart-total"></h3>
+      </section>
+      <div class="container">
+        <form>
+          <label for="firstName">Prénom : </label>
+          <input type="text" id="firstName" name="firstName" />
+          <p id="firstNameErrorMessage" class="form-error"></p>
 
+          <label for="lastName">Nom : </label>
+          <input type="text" id="lastName" name="lastName" />
+          <p id="lastNameErrorMessage" class="form-error"></p>
 
-	<!-- Scripts JS -->
-<script src="js/panier.js"></script>
+          <label for="address">Adresse : </label>
+          <input type="text" id="address" name="address" />
+          <p id="addressErrorMessage" class="form-error"></p>
 
-	<!-- Scripts JS END -->
-</body>
+          <label for="city">Ville : </label>
+          <input type="text" id="city" name="city" />
+          <p id="cityErrorMessage" class="form-error"></p>
+
+          <label for="codePostal">Code postal : </label>
+          <input type="texte" id="codePostal" name="codePostal" />
+          <p id="codePostalErrorMessage" class="form-error"></p>
+
+          <label for="email">Email : </label>
+          <input type="email" id="email" name="email" />
+          <p id="emailErrorMessage" class="form-error"></p>
+
+          <input type="submit" id="btn" value="Valider" />
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>Projet 5 du parcours d'<a href="https://openclassrooms.com/">Openclassrooms</a></p>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script src="js/panier.js"></script>
+
+    <!-- Scripts JS END -->
+  </body>
 </html>

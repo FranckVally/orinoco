@@ -1,8 +1,9 @@
-@charset "UTF-8";
 .logo {
   display: flex;
   vertical-align: middle;
   font-family: 'Caveat Brush', cursive; }
+  .logo:hover, .logo:focus {
+    background: inherit; }
 
 .topbar {
   background-color: #F3E9F1;
@@ -91,7 +92,7 @@ footer {
 
 .titre {
   text-align: center;
-  font-family: 'Caveat Brush', cursive;
+  font-family: "Caveat Brush", cursive;
   color: #9167fd; }
 
 a:link {
@@ -114,11 +115,9 @@ a:link {
   border: 2px solid #d88646; }
 
 article img {
-  display: block;
+  display: inline-block;
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1.5rem; }
+  margin: auto; }
 
 article .produits-title {
   text-align: center;
@@ -131,15 +130,12 @@ article .price {
   font-size: 1.5rem;
   text-align: center; }
 
-article .price::after {
-  content: " €"; }
-
 #produits {
   width: 80%;
   background-color: #fff;
   box-shadow: 3px 5px 5px #9167fd;
   transition: box-shadow 1s;
-  margin: auto;
+  margin: 1rem auto 5rem;
   position: relative;
   border: 2px solid #d88646;
   padding: 3rem;
@@ -200,6 +196,22 @@ form {
   justify-content: space-between;
   height: auto;
   margin: 1rem auto 5rem;
+  padding: 2rem;
+  box-shadow: none;
+  border: 2px solid black; }
+
+.invisible {
+  display: none; }
+
+#panniervide {
+  color: #000000;
+  background-color: #f3e9f1;
+  font-size: 1.2rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  margin: 1rem auto;
   padding: 2rem;
   box-shadow: none;
   border: 2px solid black; }

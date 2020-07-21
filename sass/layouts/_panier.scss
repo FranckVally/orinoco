@@ -45,3 +45,20 @@ form {
     box-shadow: none;
     border: 2px solid black;
 }
+.invisible {
+    display: none;
+}
+
+#panniervide{
+    color: #000000;
+    background-color: #f3e9f1;
+    font-size: 1.2rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    margin: 1rem auto,;
+    padding: 2rem;
+    box-shadow: none;
+    border: 2px solid black;
+}

@@ -1,38 +1,35 @@
-.titre{
+.titre {
   text-align: center;
-  font-family: 'Caveat Brush', cursive; 
-  color:#9167fd;
+  font-family: "Caveat Brush", cursive;
+  color: #9167fd;
 }
 
-a:link{
-   text-decoration: none; 
+a:link {
+  text-decoration: none;
 }
-    
+
 #produits {
-    display: flex;
-    flex-flow: row wrap; 
+  display: flex;
+  flex-flow: row wrap;
 }
 
 #produits article {
-    width: 300px;
-    height: 350px;
-    background-color: #fff;
-    box-shadow: 3px 5px 5px #9167fd;
-    transition: box-shadow 1s;
-    margin: 2rem;
-    margin-bottom: 2rem;
-    padding: 1rem 0;
-    position: relative;
-    border: 2px solid #d88646;
+  width: 300px;
+  height: 350px;
+  background-color: #fff;
+  box-shadow: 3px 5px 5px #9167fd;
+  transition: box-shadow 1s;
+  margin: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  position: relative;
+  border: 2px solid #d88646;
 }
 
-
 article img {
-  display: block;
+  display: inline-block;
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1.5rem;
+  margin: auto;
 }
 
 article .produits-title {
@@ -40,15 +37,9 @@ article .produits-title {
   font-size: 2rem;
   margin-left: 0;
   margin-bottom: 1rem;
-  
 }
 article .price {
   margin-top: 0;
   font-size: 1.5rem;
   text-align: center;
-  
-}
-
-article .price::after {
-  content: " €";
 }

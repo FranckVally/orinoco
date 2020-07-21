@@ -1,7 +1,11 @@
-.logo{
+.logo {
 	display: flex;
 	vertical-align: middle;
 	font-family: 'Caveat Brush', cursive;
+	&:hover, &:focus {
+		background: inherit;
+		
+	}
 }
 .topbar {
 	background-color: #F3E9F1;

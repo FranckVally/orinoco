@@ -35,7 +35,8 @@ const displayCart = async () => {
       incrementItem(plus, article, itemId); // appel de la fonction incrémentation avec la flèche de droite
     }
   } else {
-    cart.textContent = "Votre panier est vide.";
+   
+    cart.innerHTML =`<div id=panniervide> votre panier est vide</div>`;
     form.classList.add("invisible");
   }
 };
@@ -54,7 +55,7 @@ const renderCart = (productName, productPrice, imgUrl, productQuantity) => {
     <img src="${imgUrl}">
     <div class="product-information>
         <p class="product-title">${productName}</p>
-        <p class="price">${productPrice}</p>
+        <p class="price">${productPrice} €</p>
     </div>
     <p class="quantity"><button class="moins"> - </button>${productQuantity}<button class="plus"> + </button>
    <button class="remove">supprimer</button></p>`;

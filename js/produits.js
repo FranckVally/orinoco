@@ -25,7 +25,7 @@ const renderCams = (produitsData) => {
         <img src="${produitsData.imageUrl}" alt="${produitsData.name}">
         <div class="produits-information">
             <h2 class="produits-title">${produitsData.name}</h2>
-            <p class="price">${produitsData.price / 100}</p>
+            <p class="price">${produitsData.price / 100} €</p>
         </div>
     </div>`;
 };
