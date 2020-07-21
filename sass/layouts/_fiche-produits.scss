@@ -1,11 +1,9 @@
-#produits article {
-    
-    
-}
-#produits {
+#produit {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; 
     
     width: 80%;
-    background-color: #fff;
     box-shadow: 3px 5px 5px #9167fd;
     transition: box-shadow 1s;
     margin: 1rem auto 5rem;
@@ -30,9 +28,12 @@
 
 .add-to-cart{
     margin: auto;
+    width: 30%;
     padding: 0.5rem;
 }
 
-label{
-    margin: auto; 
+#produit label {
+    margin: auto;
+    width: 30%; 
 }
+

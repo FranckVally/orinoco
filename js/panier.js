@@ -36,7 +36,7 @@ const displayCart = async () => {
     }
   } else {
    
-    cart.innerHTML =`<div id=panniervide> votre panier est vide</div>`;
+    cart.innerHTML =`<div id=paniervide> votre panier est vide</div>`;
     form.classList.add("invisible");
   }
 };
@@ -62,6 +62,7 @@ const renderCart = (productName, productPrice, imgUrl, productQuantity) => {
   cart.insertBefore(article, cartTotal); // Insère article avant cartTotal
   totalPrice += productPrice * productQuantity; /* Implémente prix */
   cartTotal.textContent = `Total : ${totalPrice} €`; /* Affiche le prix total */
+
 };
 /* Supprime élément du panier sur un clique*/
 const deleteCart = (removeElt, container, productId) => {
@@ -239,7 +240,7 @@ btn.addEventListener("click", async (e) => {
       "http://localhost:3000/api/cameras/order",
       cartInformation
     ); // Envoie données au serveur
-    window.location = `./confirmation.html?id=${response.orderId}&price=${totalPrice}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
+    window.location = `./confirmationcommande.html?id=${response.orderId}&price=${totalPrice}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
     localStorage.removeItem("panier");
   }
 });
