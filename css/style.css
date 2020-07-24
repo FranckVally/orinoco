@@ -38,6 +38,10 @@
     display: flex;
     justify-content: space-between; } }
 
+.Nbr-article {
+  font-size: 0.8rem;
+  text-align: end; }
+
 footer {
   text-align: center;
   background-color: #F3E9F1;
@@ -102,7 +106,8 @@ a:link {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 2rem; }
 
 #produits article {
   width: 40%;
@@ -156,14 +161,16 @@ article .price {
 #lenses-list {
   margin: auto; }
 
-.add-to-cart {
+.bouton-ajout {
   margin: auto;
   width: 30%;
-  padding: 0.5rem; }
+  padding: 1rem; }
 
 #produit label {
-  margin: auto;
-  width: 30%; }
+  margin: auto; }
+
+.ajout {
+  min-width: 7rem; }
 
 #cart h3,
 #cart article {

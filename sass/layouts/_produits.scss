@@ -13,6 +13,7 @@ a:link {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 #produits article {
@@ -27,8 +28,7 @@ a:link {
   padding: 0.5rem 0.5rem;
   position: relative;
   border: 2px solid #d88646;
-  text-align: center;
-  
+  text-align: center; 
 }
 
 article img {

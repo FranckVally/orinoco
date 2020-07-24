@@ -6,33 +6,6 @@ const id = params.get("id");
 
 const article = document.querySelector("article");
 
-//Chargement quantité de produit à coté du panier (TotalQt)
-function chargementPanier() {
-  let nombreProduit = localStorage.getItem('quanti');
-
-  if (nombreProduit) {
-    document.querySelector('.totalQt').textContent = nombreProduit;
-  } else {
-    document.querySelector('.totalQt').textContent = 0;
-  }
-}
-
-chargementPanier();
-
-//Mise a jour quantité de produit à coté du panier
-function nombreProduit() {
-  let nombreProduit = localStorage.getItem('quanti');
-  nombreProduit = parseInt(nombreProduit);
-
-  if (nombreProduit) {
-    localStorage.setItem("quanti", nombreProduit + 1);
-    document.querySelector('.totalQt').textContent = nombreProduit + 1;
-  } else {
-    localStorage.setItem("quanti", 1);
-    document.querySelector('.totalQt').textContent = 1;
-  }
-}
-
 // Affiche le produit
 const displayProduits = async () => {
   const data = await getOneCams(url, id);
@@ -45,7 +18,6 @@ const getOneCams = async (produitsUrl, produitsId) => {
   const response = await fetch(produitsUrl + produitsId);
   return await response.json();
 };
-
 // Fourni l'affichage selon les données du produit
 const renderCams = (produitsData) => {
   article.innerHTML = `
@@ -60,7 +32,6 @@ const renderCams = (produitsData) => {
 
 // Personnalise le produit
 const customizeYourCamera = (parentElt, produitsLenses) => {
-
   // Crée liste déroulante
   const label = document.createElement("label");
   const select = document.createElement("select");
@@ -68,7 +39,7 @@ const customizeYourCamera = (parentElt, produitsLenses) => {
   label.setAttribute("for", "lenses-list");
   label.textContent = "Lentilles disponibles : ";
   select.id = "lenses-list";
-
+  
   parentElt.appendChild(label).appendChild(select);
 
   // Crée une balise option pour chaque lentille
@@ -78,32 +49,20 @@ const customizeYourCamera = (parentElt, produitsLenses) => {
     option.textContent = produitsLense.toUpperCase();
     select.appendChild(option);
   });
-
   // Récupère la lentille choisie dans la console
   select.addEventListener("change", (e) => {
     lenseChosen = e.target.value.toLowerCase();
   });
 };
-
-
-// Ajoute le produit au panier
+// // Ajoute le produit au panier
 const addToCart = (parentElt, produitsData) => {
-
   // Crée le bouton d'envoie du produit
   const btn = document.createElement("button");
-  btn.textContent = "Ajouter au panier";
-
   const div = document.createElement("div");
-  div.classList.add("bouton-ajout");
+  btn.textContent = "Ajouter au panier";
+  div.classList.add("add-to-cart");
   parentElt.appendChild(div).appendChild(btn);
 
-  // Crée l'affichage de confirmation
-  const confirmationAjout = document.createElement("div")
-  confirmationAjout.classList.add("ajout");
-  parentElt.appendChild(confirmationAjout);
-
-
-  
   // Assigne valeur à envoyer à localStorage
   const produits = {
     id: produitsData._id,
@@ -115,27 +74,21 @@ const addToCart = (parentElt, produitsData) => {
 
   // Envoie valeur à localStorage après un clique
   btn.addEventListener("click", () => {
-    nombreProduit() /* appelle de la fonction pour ajouter +1 à coté du panier  */
-    
     // récupérer panier localstorage
     let panier = JSON.parse(localStorage.getItem("panier"));
     if (panier === null) {
       panier = {};
     }
-    
     // ajouter le produit au panier
     if (panier[produits.id] !== undefined) {
       panier[produits.id].quantity += 1;
     } else {
       panier[produits.id] = produits;
     }
-
-    // stocké la quantité dans le panier localstorage
+    // update panier localstorage
     localStorage.setItem("panier", JSON.stringify(panier));
-    console.log(panier);
-    
-    //affiche a coté du bouton ajouté au panier
-    confirmationAjout.textContent = "Article ajouté au panier";
+    btn.classList.add("invisible");
+    div.textContent = "Le produit a été ajouté au panier !";
   });
 };
 

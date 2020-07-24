@@ -1,3 +1,57 @@
+//Chargement quantité de produit à coté du panier (TotalQt)
+function chargementPanier() {
+  let nombreProduit = localStorage.getItem('quanti');
+  
+  if (nombreProduit) {
+    document.querySelector('.totalQt').textContent = nombreProduit;
+  } else {
+    document.querySelector('.totalQt').textContent = 0;
+  }
+}
+
+chargementPanier();
+
+//Mise a jour quantité de produit à coté du panier en plus
+function nombreProduit() {
+  let nombreProduit = localStorage.getItem('quanti');
+  nombreProduit = parseInt(nombreProduit);
+
+  if (nombreProduit) {
+    localStorage.setItem("quanti", nombreProduit +  1);
+    document.querySelector('.totalQt').textContent = nombreProduit + 1;
+  } else {
+    localStorage.setItem("quanti", 1);
+    document.querySelector('.totalQt').textContent = 1;
+  }
+}
+//Mise a jour quantité de produit à coté du panier en moins
+function proMoins() {
+  let nombreProduit = localStorage.getItem('quanti');
+  nombreProduit = parseInt(nombreProduit);
+
+  if (nombreProduit) {
+    localStorage.setItem("quanti", nombreProduit - 1);
+    document.querySelector('.totalQt').textContent = nombreProduit - 1;
+  } else {
+    localStorage.setItem("quanti", 1);
+    document.querySelector('.totalQt').textContent = 1;
+  }
+}
+//Mise a jour quantité de produit à coté du panier a Zero
+function produitSupprimer() {
+  let nombreProduit = localStorage.getItem('quanti');
+  nombreProduit = parseInt(nombreProduit);
+
+  if (nombreProduit) {
+    localStorage.setItem("quanti", nombreProduit - nombreProduit);
+    document.querySelector('.totalQt').textContent = 0;
+  } else {
+    localStorage.setItem("quanti", 1);
+    document.querySelector('.totalQt').textContent = 0;
+  }
+}
+
+
 const cart = document.querySelector("#cart"); // Récupère la section du panier
 const cartTotal = document.getElementById("cart-total"); //Récupère le h3 pour le prix total
 const form = document.querySelector("form"); // Récupère le formulaire
@@ -6,13 +60,14 @@ const cartInformation = {
   contact: {},
   products: [],
 };
+
 /* Stock le prix total */
 let totalPrice = 0;
 
 // Affiche le/les produit(s) du panier.
 const displayCart = async () => {
   const cartItems = JSON.parse(localStorage.getItem("panier"));
-  if (Object.keys(cartItems).length > 0) {
+  if (Object.keys(cartItems).length > 0) {  // si le tableau est vide
     for (let i = 0; i < Object.keys(cartItems).length; i++) {
       // Pour chaque article du panier
       const itemId = Object.keys(cartItems)[i];
@@ -31,8 +86,8 @@ const displayCart = async () => {
       const plus = document.querySelectorAll(".plus")[i];
 
       deleteCart(remove, article, itemId);
-      decrementItem(moins, article, itemId); // appel de la fonction décrémentation avec la flèche de gauche
-      incrementItem(plus, article, itemId); // appel de la fonction incrémentation avec la flèche de droite
+      decrementItem(moins, article, itemId, ); // appel de la fonction décrémentation avec le bouton moins
+      incrementItem(plus, article, itemId); // appel de la fonction incrémentation avec le bouton plus
     }
   } else {
    
@@ -64,33 +119,45 @@ const renderCart = (productName, productPrice, imgUrl, productQuantity) => {
   cartTotal.textContent = `Total : ${totalPrice} €`; /* Affiche le prix total */
 
 };
+
+
 /* Supprime élément du panier sur un clique*/
 const deleteCart = (removeElt, container, productId) => {
   removeElt.addEventListener("click", async () => {
+    produitSupprimer()
     const panier = JSON.parse(localStorage.getItem("panier"));
+
+
     if (panier === null) return;
     if (panier[productId] === undefined) return;
     else {
       delete panier[productId];
     }
     localStorage.setItem("panier", JSON.stringify(panier));
+
     // ); /* Supprime item du localStorage */
     container.remove(); /* Supprime item du DOM */
     location.reload(true); /* Actualise la page dynamiquement */
-  });
+    
+    
+    });
 };
 
 // décrémente et enlève un produit au panier avec bouton moins
 
 const decrementItem = (moins, container, productId) => {
   moins.addEventListener("click", () => {
+    
+    proMoins()
+    
     const panier = JSON.parse(localStorage.getItem("panier"));
     if (panier === null) return;
     if (panier[productId] === undefined) return;
     if (panier[productId].quantity > 1) {
       panier[productId].quantity--;
+     
     } else {
-      delete panier[productId];
+      delete panier[productId]; 
     }
     localStorage.setItem("panier", JSON.stringify(panier));
     // ); /* Supprime item du localStorage */
@@ -103,6 +170,7 @@ const decrementItem = (moins, container, productId) => {
 
 const incrementItem = (plus, container, productId) => {
   plus.addEventListener("click", () => {
+    nombreProduit()
     const panier = JSON.parse(localStorage.getItem("panier"));
     if (panier === null) return;
     if (panier[productId] === undefined) return;
@@ -112,9 +180,11 @@ const incrementItem = (plus, container, productId) => {
       delete panier[productId];
     }
     localStorage.setItem("panier", JSON.stringify(panier));
+    
     // ); /* Supprime item du localStorage */
     container.remove(); /* Supprime item du DOM */
     location.reload(true);
+    
   });
 };
 
