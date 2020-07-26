@@ -39,19 +39,6 @@ function produitsEnMoins() {
   }
 }
 
-//Mise a jour quantité de produit suprimé
-function produitsSupprime() {
-  let nombreProduit = localStorage.getItem('quanti');
-  nombreProduit = parseInt(nombreProduit);
-
-  if (nombreProduit) {
-    localStorage.setItem("quanti", nombreProduit - panier[productId].quantity);
-    document.querySelector('.totalQt').textContent = nombreProduit - panier[productId].quantity;
-  } else {
-    localStorage.setItem("quanti", 1);
-    document.querySelector('.totalQt').textContent = 1;
-  }
-}
 
 
 const cart = document.querySelector("#cart"); // Récupère la section du panier
@@ -78,7 +65,7 @@ const displayCart = async () => {
       const camName = product.name; // Stocke le nom du produit
       const camPrice = product.price / 100; // Stocke le prix du produit
       const camImg = product.imageUrl; // Stocke l'image du produit
-      const camQuantity = cartItems[itemId].quantity;
+      const camQuantity = cartItems[itemId].quantity; //Quantité de camera acheté
       cartInformation.products.push(camId); // Envoie l'id du produit au tableau products de cartInformation
       renderCart(camName, camPrice, camImg, camQuantity); // Fourni l'affichage du/des produits du panier
 
@@ -137,12 +124,9 @@ function produitSupprimer() {
   }
 }
 
-
-
 /* Supprime élément du panier sur un clique*/
 const deleteCart = (removeElt, container, productId) => {
   removeElt.addEventListener("click", async () => {
-    
     const panier = JSON.parse(localStorage.getItem("panier"));
     
     function deletProduits() {
@@ -154,18 +138,23 @@ const deleteCart = (removeElt, container, productId) => {
         document.querySelector('.totalQt').textContent = nombreProduit - panier[productId].quantity ;
       } else {
         localStorage.setItem("quanti", 1);
-        document.querySelector('.totalQt').textContent = nombreProduit;
+        document.querySelector('.totalQt').textContent = 12 ;
       }
     }
-   
-
+    deletProduits()
     if (panier === null) return;
     if (panier[productId] === undefined) return;
-    
-      else {
-        deletProduits() 
-        delete panier[productId];
-        }
+    else {
+
+      console.log(document.querySelector('.totalQt').textContent);
+      console.log (panier[productId]);
+      console.log(panier);
+      console.log(panier.quantity);
+      console.log (panier[productId].quantity);
+      
+      
+
+    }
     localStorage.setItem("panier", JSON.stringify(panier));
 
     // ); /* Supprime item du localStorage */
