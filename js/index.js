@@ -1,38 +1,26 @@
 // URL de l'api
 const url = "http://localhost:3000/api/cameras";
 
+
 //Chargement quantité de produit à coté du panier (TotalQt)
-function chargementPanier() {
-  let nombreProduit = localStorage.getItem('quanti');
-
+function chargementPanier() {                            // création d'une fonction appellé chargenentPanier //
+  let nombreProduit = localStorage.getItem('quanti');   // déclaration varriable nombreProduit et chargemant dans le cache navigateur//
+  console.log(nombreProduit) //affiche dans la consol le nombre de produit en pannier //                               
   if (nombreProduit) {
-    document.querySelector('.totalQt').textContent = nombreProduit;
+    document.querySelector('.totalQt').textContent = nombreProduit;  // ecrire la valeur nombreProduit si présente dans l'element HTML .TotalQt //
   } else {
-    document.querySelector('.totalQt').textContent = 0;
+    document.querySelector('.totalQt').textContent = 0;             // Sinon innscrie 0 dans l'element HTML .TotalQt //
+  
   }
 }
 
-chargementPanier();
-
-//Mise a jour quantité de produit à coté du panier
-function nombreProduit() {
-  let nombreProduit = localStorage.getItem('quanti');
-  nombreProduit = parseInt(nombreProduit);
-
-  if (nombreProduit) {
-    localStorage.setItem("quanti", nombreProduit + 1);
-    document.querySelector('.totalQt').textContent = nombreProduit + 1;
-  } else {
-    localStorage.setItem("quanti", 1);
-    document.querySelector('.totalQt').textContent = 1;
-  }
-}
+chargementPanier();   //execute la fonction
 
 // Affiche les produits
-const afficheProducts = async () => {
+const afficheProducts = async () => {                   // fonction pour faire un tableau contemant par produits provenant de la BDD //
   const products = await getAllCams(url);
   products.forEach((product) => {
-    renderProduct(product.name, product._id, product.imageUrl, product.price);
+    renderProduct(product.name, product._id, product.imageUrl, product.price);  //nom des carractéristiques //
     console.log(products);
   });
 };
@@ -44,9 +32,9 @@ const getAllCams = async (url) => {
 };
 
 // affichage d'un produit
-function renderProduct(productName, productId, productImg, productPrice) {
+function renderProduct(productName, productId, productImg, productPrice) {                    // fonction pour fabriquer le rendu avec les carractéristiques produits //
   const products = document.querySelector("#produits");                                       // Récupère la div qui contiendra les différents articles.
-  const article = document.createElement("article");                                          // création d'une  element HTML artivle.    
+  const article = document.createElement("article");                                          // création d'une  element HTML artice.    
   article.innerHTML =                                                                         //  construction de l'élément contenant les carractéristiques des articles.
     `<a href="produits.html?id=${productId}" style="display:block;width:100%;height:100%;">
     <img alt="${productName}" src="${productImg}">

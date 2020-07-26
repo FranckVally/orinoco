@@ -24,8 +24,9 @@ function nombreProduit() {
     document.querySelector('.totalQt').textContent = 1;
   }
 }
+
 //Mise a jour quantité de produit à coté du panier en moins
-function proMoins() {
+function produitsEnMoins() {
   let nombreProduit = localStorage.getItem('quanti');
   nombreProduit = parseInt(nombreProduit);
 
@@ -37,19 +38,7 @@ function proMoins() {
     document.querySelector('.totalQt').textContent = 1;
   }
 }
-//Mise a jour quantité de produit à coté du panier a Zero
-function produitSupprimer() {
-  let nombreProduit = localStorage.getItem('quanti');
-  nombreProduit = parseInt(nombreProduit);
 
-  if (nombreProduit) {
-    localStorage.setItem("quanti", nombreProduit - nombreProduit);
-    document.querySelector('.totalQt').textContent = 0;
-  } else {
-    localStorage.setItem("quanti", 1);
-    document.querySelector('.totalQt').textContent = 0;
-  }
-}
 
 
 const cart = document.querySelector("#cart"); // Récupère la section du panier
@@ -76,7 +65,7 @@ const displayCart = async () => {
       const camName = product.name; // Stocke le nom du produit
       const camPrice = product.price / 100; // Stocke le prix du produit
       const camImg = product.imageUrl; // Stocke l'image du produit
-      const camQuantity = cartItems[itemId].quantity;
+      const camQuantity = cartItems[itemId].quantity; //Quantité de camera acheté
       cartInformation.products.push(camId); // Envoie l'id du produit au tableau products de cartInformation
       renderCart(camName, camPrice, camImg, camQuantity); // Fourni l'affichage du/des produits du panier
 
@@ -120,18 +109,42 @@ const renderCart = (productName, productPrice, imgUrl, productQuantity) => {
 
 };
 
+//Mise a jour quantité de produit à coté du panier a Zero
+function produitSupprimer() {
+  
+  let nombreProduit = localStorage.getItem('quanti');
+  nombreProduit = parseInt(nombreProduit);
+
+  if (nombreProduit) {
+    localStorage.setItem("quanti", nombreProduit - nombreProduit);
+    document.querySelector('.totalQt').textContent = nombreProduit;
+  } else {
+    localStorage.setItem("quanti", 1);
+    document.querySelector('.totalQt').textContent = nombreProduit;
+  }
+}
 
 /* Supprime élément du panier sur un clique*/
 const deleteCart = (removeElt, container, productId) => {
   removeElt.addEventListener("click", async () => {
-    produitSupprimer()
     const panier = JSON.parse(localStorage.getItem("panier"));
-
+   
 
     if (panier === null) return;
     if (panier[productId] === undefined) return;
     else {
-      delete panier[productId];
+
+      console.log(document.querySelector('.totalQt').textContent);
+      console.log (panier[productId]);
+      console.log(panier);
+      console.log(panier.quantity);
+      console.log (panier[productId].quantity);
+      
+      
+      //document.querySelector('.totalQt').textContent = nombreProduit - panier[productId].quantity;
+      document.querySelector('.totalQt').textContent = 999;
+      //delete panier[productId];
+
     }
     localStorage.setItem("panier", JSON.stringify(panier));
 
@@ -148,7 +161,7 @@ const deleteCart = (removeElt, container, productId) => {
 const decrementItem = (moins, container, productId) => {
   moins.addEventListener("click", () => {
     
-    proMoins()
+    produitsEnMoins()
     
     const panier = JSON.parse(localStorage.getItem("panier"));
     if (panier === null) return;

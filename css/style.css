@@ -163,11 +163,12 @@ article .price {
 
 .bouton-ajout {
   margin: auto;
-  width: 30%;
+  min-width: 12rem;
   padding: 1rem; }
 
 #produit label {
-  margin: auto; }
+  margin: auto;
+  min-width: 12rem; }
 
 .ajout {
   min-width: 7rem; }

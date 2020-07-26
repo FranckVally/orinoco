@@ -1,10 +1,9 @@
 // URL de l'api
 const url = "http://localhost:3000/api/cameras/";
+
 // Recupere les paramètres de l'url
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-
-const article = document.querySelector("article");
 
 //Chargement quantité de produit à coté du panier (TotalQt)
 function chargementPanier() {
@@ -16,7 +15,6 @@ function chargementPanier() {
     document.querySelector('.totalQt').textContent = 0;
   }
 }
-
 chargementPanier();
 
 //Mise a jour quantité de produit à coté du panier
@@ -34,12 +32,16 @@ function nombreProduit() {
 }
 
 // Affiche le produit
+const article = document.querySelector("article");
+
 const displayProduits = async () => {
   const data = await getOneCams(url, id);
   renderCams(data);
   customizeYourCamera(article, data.lenses);
   addToCart(article, data);
+
 };
+
 // Récupère une caméra
 const getOneCams = async (produitsUrl, produitsId) => {
   const response = await fetch(produitsUrl + produitsId);
@@ -66,7 +68,7 @@ const customizeYourCamera = (parentElt, produitsLenses) => {
   const select = document.createElement("select");
 
   label.setAttribute("for", "lenses-list");
-  label.textContent = "Lentilles disponibles : ";
+  label.textContent = "Lentilles disponibles: ";
   select.id = "lenses-list";
 
   parentElt.appendChild(label).appendChild(select);
@@ -82,9 +84,10 @@ const customizeYourCamera = (parentElt, produitsLenses) => {
   // Récupère la lentille choisie dans la console
   select.addEventListener("change", (e) => {
     lenseChosen = e.target.value.toLowerCase();
+
+    console.log(lenseChosen);  //juste pour les testes vue dans la console de la lentille choisie.//  
   });
 };
-
 
 // Ajoute le produit au panier
 const addToCart = (parentElt, produitsData) => {
@@ -102,8 +105,6 @@ const addToCart = (parentElt, produitsData) => {
   confirmationAjout.classList.add("ajout");
   parentElt.appendChild(confirmationAjout);
 
-
-  
   // Assigne valeur à envoyer à localStorage
   const produits = {
     id: produitsData._id,
@@ -113,16 +114,17 @@ const addToCart = (parentElt, produitsData) => {
     quantity: 1,
   };
 
+
   // Envoie valeur à localStorage après un clique
   btn.addEventListener("click", () => {
     nombreProduit() /* appelle de la fonction pour ajouter +1 à coté du panier  */
-    
+
     // récupérer panier localstorage
     let panier = JSON.parse(localStorage.getItem("panier"));
     if (panier === null) {
       panier = {};
     }
-    
+
     // ajouter le produit au panier
     if (panier[produits.id] !== undefined) {
       panier[produits.id].quantity += 1;
@@ -132,8 +134,9 @@ const addToCart = (parentElt, produitsData) => {
 
     // stocké la quantité dans le panier localstorage
     localStorage.setItem("panier", JSON.stringify(panier));
-    console.log(panier);
     
+    console.log(panier); //pour les testes affiche l'objet panier avec les valeurs //
+
     //affiche a coté du bouton ajouté au panier
     confirmationAjout.textContent = "Article ajouté au panier";
   });
