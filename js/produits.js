@@ -6,9 +6,10 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 //Chargement quantité de produit à coté du panier (TotalQt)
+
 function chargementPanier() {
   let nombreProduit = localStorage.getItem('quanti');
-
+  document.querySelector('.totalQt').textContent = 0
   if (nombreProduit) {
     document.querySelector('.totalQt').textContent = nombreProduit;
   } else {
@@ -33,12 +34,12 @@ function nombreProduit() {
 
 // Affiche le produit
 const article = document.querySelector("article");
-
 const displayProduits = async () => {
   const data = await getOneCams(url, id);
   renderCams(data);
   customizeYourCamera(article, data.lenses);
   addToCart(article, data);
+  console.log(data);
 
 };
 
@@ -83,9 +84,8 @@ const customizeYourCamera = (parentElt, produitsLenses) => {
 
   // Récupère la lentille choisie dans la console
   select.addEventListener("change", (e) => {
-    lenseChosen = e.target.value.toLowerCase();
-
-    console.log(lenseChosen);  //juste pour les testes vue dans la console de la lentille choisie.//  
+    lenseChosen = e.target.value.toLowerCase(); // attribue en chaîne de caractères courante en minuscules la valeur de la lentille choissi a lenseChosen.
+    console.log(lenseChosen);  //juste pour les testes vue dans la console de la lentille choisie.//
   });
 };
 
@@ -134,7 +134,7 @@ const addToCart = (parentElt, produitsData) => {
 
     // stocké la quantité dans le panier localstorage
     localStorage.setItem("panier", JSON.stringify(panier));
-    
+
     console.log(panier); //pour les testes affiche l'objet panier avec les valeurs //
 
     //affiche a coté du bouton ajouté au panier

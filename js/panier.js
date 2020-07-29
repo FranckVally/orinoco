@@ -1,7 +1,7 @@
 //Chargement quantité de produit à coté du panier (TotalQt)
 function chargementPanier() {
   let nombreProduit = localStorage.getItem('quanti');
-  
+  document.querySelector('.totalQt').textContent = 0
   if (nombreProduit) {
     document.querySelector('.totalQt').textContent = nombreProduit;
   } else {
@@ -153,7 +153,7 @@ const deleteCart = (removeElt, container, productId) => {
         localStorage.setItem("quanti", nombreProduit - panier[productId].quantity );
         document.querySelector('.totalQt').textContent = nombreProduit - panier[productId].quantity ;
       } else {
-        localStorage.setItem("quanti", 1);
+        localStorage.setItem("quanti", nombreProduit);
         document.querySelector('.totalQt').textContent = nombreProduit;
       }
     }
@@ -222,6 +222,8 @@ const incrementItem = (plus, container, productId) => {
 };
 
 displayCart();
+
+
 
 const containNumber = /[0-9]/;
 const regexEmail = /.+@.+\..+/;

@@ -5,12 +5,15 @@ const url = "http://localhost:3000/api/cameras";
 //Chargement quantité de produit à coté du panier (TotalQt)
 function chargementPanier() {                            // création d'une fonction appellé chargenentPanier //
   let nombreProduit = localStorage.getItem('quanti');   // déclaration varriable nombreProduit et chargemant dans le cache navigateur//
-  console.log(nombreProduit) //affiche dans la consol le nombre de produit en pannier //                               
+  console.log(nombreProduit)
+  
+  document.querySelector('.totalQt').textContent = 0                             
+  
   if (nombreProduit) {
     document.querySelector('.totalQt').textContent = nombreProduit;  // ecrire la valeur nombreProduit si présente dans l'element HTML .TotalQt //
   } else {
     document.querySelector('.totalQt').textContent = 0;             // Sinon innscrie 0 dans l'element HTML .TotalQt //
-  
+   console.log(nombreProduit) //affiche dans la consol le nombre de produit en pannier // 
   }
 }
 

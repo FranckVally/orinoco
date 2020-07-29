@@ -24,6 +24,9 @@
       align-items: center;
       padding: 0; } }
 
+.hidden {
+  display: none; }
+
 .nav__link {
   text-decoration: none;
   color: black;
