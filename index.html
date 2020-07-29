@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-	<title>ORINOCO</title>
-	<meta name="description" content="ORINOCO : site de vente en ligne.">
-</head>
-<body class="container">
-	<header class="topbar">
-		
-        <div class="logo">
-        <img class="topbar__logo" src="images/logo_orinoco.png" alt="Logo d'Orinoco">
-        <h1>ORINOCO</h1>
-        </div>
-        
-		<nav class="nav topbar__nav">
-			<a href="index.html" class="nav__link">Accueil</a>
-			<a href="panier.html" class="nav__link">Panier</a> 
-			<p class="Nbr-article">Nombre d'articles déjà commandés : <span class="totalQt"></span></p>
-		</nav>
-	</header>
-	<main>
-		<div class="titre"><h2>Nos appareils photos</h2></div>
-		<div id="produits"></div>
-	</main>
-	<footer>
-		<p>Projet 5 du parcours d'<a href="https://openclassrooms.com/">Openclassrooms</a></p>
-	</footer>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ORINOCO</title>
+    <meta name="description" content="ORINOCO : site de vente en ligne." />
+  </head>
+  <body class="container">
+    <header class="topbar">
+      <div class="logo">
+        <a href="index.html" style="display: block; width: 100%; height: 100%;">
+          <img
+            class="topbar__logo"
+            src="images/logo_orinoco.png"
+            alt="Logo d'Orinoco"
+          />
+        </a>
+        <h1>ORINOCO</h1>	
+      </div>
 
-<!-- Scripts JS -->
-<script src="js/index.js" async></script>
-<!-- Scripts JS END -->
-</body>
+      <nav class="nav topbar__nav">
+        <a href="index.html" class="nav__link">Accueil</a>
+        <a href="panier.html" class="nav__link">Panier</a>
+        <p class="Nbr-article">
+          Nombre d'articles déjà commandés : <span class="totalQt"></span>
+        </p>
+      </nav>
+    </header>
+    <main>
+      <div class="titre"><h2>Nos appareils photos</h2></div>
+      <div id="produits"></div>
+    </main>
+    <footer>
+      <p>
+        Projet 5 du parcours d'<a href="https://openclassrooms.com/"
+          >Openclassrooms</a
+        >
+      </p>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script src="js/index.js" async></script>
+    <!-- Scripts JS END -->
+  </body>
 </html>
